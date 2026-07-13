@@ -7,7 +7,7 @@ import time
 from datetime import datetime, timedelta
 from typing import Any, Optional
 
-from homeassistant.components.sensor import SensorEntity
+from homeassistant.components.sensor import SensorEntity, SensorStateClass
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.event import async_track_point_in_time
 from homeassistant.util import dt as dt_util
@@ -131,6 +131,7 @@ class AzimuthSensor(SensorEntity):
         self._attr_has_entity_name = True
         self._attr_native_value = None
         self._attr_native_unit_of_measurement = "°"
+        self._attr_state_class = SensorStateClass.MEASUREMENT
         self._attr_available = False
         self._unsub_update = None
         self._observer = None
@@ -495,6 +496,7 @@ class ElevationSensor(SensorEntity):
         self._attr_has_entity_name = True
         self._attr_native_value = None
         self._attr_native_unit_of_measurement = "°"
+        self._attr_state_class = SensorStateClass.MEASUREMENT
         self._attr_available = False
         self._unsub_update = None
         self._observer = None
@@ -1726,7 +1728,7 @@ class SolarDeclinationNormalizedSensor(SensorEntity):
         self._attr_native_value = None
         self._attr_native_unit_of_measurement = "∞"  # Infinity symbol
         self._attr_device_class = None
-        self._attr_state_class = "measurement"
+        self._attr_state_class = SensorStateClass.MEASUREMENT
         self._attr_available = False
         
         # Device info
@@ -2101,6 +2103,7 @@ class PhaseAngleSensor(SensorEntity):
         self._attr_has_entity_name = True
         self._attr_native_value = None
         self._attr_native_unit_of_measurement = "°"
+        self._attr_state_class = SensorStateClass.MEASUREMENT
         self._attr_device_class = None
         self._attr_icon = "mdi:orbit"
         self._attr_available = False
@@ -2215,6 +2218,7 @@ class ParallacticAngleSensor(SensorEntity):
         self._attr_has_entity_name = True
         self._attr_native_value = None
         self._attr_native_unit_of_measurement = "°"
+        self._attr_state_class = SensorStateClass.MEASUREMENT
         self._attr_device_class = None
         self._attr_icon = "mdi:angle-acute"
         self._attr_available = False
